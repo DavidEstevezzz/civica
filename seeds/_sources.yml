@@ -5,4 +5,4 @@ sources:
     database: DBT
     schema: PUBLIC
     tables:
-      - name: PERSONAS 
+      - name: PERSONAS
