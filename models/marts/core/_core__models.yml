@@ -1,0 +1,103 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: "Dimensión de usuarios con información básica del usuario y su dirección asociada."
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario procedente del sistema origen."
+        tests:
+          - not_null
+          - unique
+
+      - name: first_name
+        description: "Nombre del usuario."
+
+      - name: last_name
+        description: "Apellidos del usuario."
+
+      - name: full_name
+        description: "Nombre completo del usuario."
+
+      - name: email
+        description: "Correo electrónico del usuario."
+
+      - name: phone_number
+        description: "Número de teléfono del usuario."
+
+      - name: user_created_at
+        description: "Fecha de creación del usuario en el sistema origen."
+
+      - name: user_updated_at
+        description: "Fecha de última actualización del usuario en el sistema origen."
+
+      - name: total_orders
+        description: "Número total de pedidos asociados al usuario según el sistema origen."
+
+      - name: address_id
+        description: "Identificador de la dirección asociada al usuario."
+
+      - name: address
+        description: "Dirección postal del usuario."
+
+      - name: zipcode
+        description: "Código postal."
+
+      - name: state
+        description: "Estado o provincia."
+
+      - name: country
+        description: "País."
+
+  - name: fct_orders
+    description: "Tabla de hechos de pedidos con importes, estado, envío y métricas agregadas de productos."
+    columns:
+      - name: order_id
+        description: "Identificador único del pedido procedente del sistema origen."
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: "Identificador del usuario que realizó el pedido."
+        tests:
+          - not_null
+
+      - name: address_id
+        description: "Identificador de la dirección de envío."
+
+      - name: promo_id
+        description: "Identificador de la promoción aplicada al pedido, si existe."
+
+      - name: order_created_at
+        description: "Fecha de creación del pedido."
+
+      - name: estimated_delivery_at
+        description: "Fecha estimada de entrega."
+
+      - name: delivered_at
+        description: "Fecha real de entrega, si el pedido fue entregado."
+
+      - name: order_status
+        description: "Estado actual del pedido."
+
+      - name: shipping_service
+        description: "Servicio de envío utilizado."
+
+      - name: tracking_id
+        description: "Identificador de seguimiento del envío."
+
+      - name: order_cost
+        description: "Coste de los productos del pedido antes de gastos de envío."
+
+      - name: shipping_cost
+        description: "Coste del envío."
+
+      - name: order_total
+        description: "Importe total del pedido."
+
+      - name: distinct_products_count
+        description: "Número de productos distintos incluidos en el pedido."
+
+      - name: total_items_quantity
+        description: "Cantidad total de unidades incluidas en el pedido."
